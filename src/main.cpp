@@ -18,6 +18,13 @@
 
 #ifdef _WIN32
 #include <Windows.h>
+#include <fcntl.h>
+#include <io.h>
+#define POPEN _popen
+#define PCLOSE _pclose
+#else
+#define POPEN popen
+#define PCLOSE pclose
 #endif
 
 using namespace boost::asio;
@@ -45,22 +52,25 @@ struct ClipboardData {
 std::string exec_command(const char* cmd) {
 	std::array<char, 128> buffer;
 	std::string result;
-	std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
-	if (!pipe) {
-		throw std::runtime_error("popen() failed!");
-	}
-	while (fgets(buffer.data(), buffer.size(), pipe.get())) {
-		result += buffer.data();
-	}
-	return result;
-}
 
-// 执行命令行不获取输出
-void exec_command_no_output(const char* cmd) {
-	std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "w"), pclose);
+	// 使用平台特定的popen函数
+	FILE* pipe = POPEN(cmd, "r");
 	if (!pipe) {
 		throw std::runtime_error("popen() failed!");
 	}
+
+	try {
+		while (fgets(buffer.data(), static_cast<int>(buffer.size()), pipe) != nullptr) {
+			result += buffer.data();
+		}
+	}
+	catch (...) {
+		PCLOSE(pipe);
+		throw;
+	}
+
+	PCLOSE(pipe);
+	return result;
 }
 
 #ifdef _WIN32
@@ -93,11 +103,11 @@ public:
 	ClipboardData get_clipboard_content() {
 		ClipboardData data;
 		data.source_id = uuid;
-		
+
 #ifdef _WIN32
 		if (OpenClipboard(nullptr)) {
 			std::string clipboard_text;
-			
+
 			// 优先尝试获取Unicode文本
 			if (IsClipboardFormatAvailable(CF_UNICODETEXT)) {
 				HANDLE hData = GetClipboardData(CF_UNICODETEXT);
@@ -116,18 +126,23 @@ public:
 					char* cstr = static_cast<char*>(GlobalLock(hData));
 					if (cstr) {
 						// 将ANSI文本转换为UTF-8
-						std::wstring wstr(cstr, cstr + strlen(cstr));
+						std::wstring wstr;
+						int size = MultiByteToWideChar(CP_ACP, 0, cstr, -1, NULL, 0);
+						if (size > 0) {
+							wstr.resize(size);
+							MultiByteToWideChar(CP_ACP, 0, cstr, -1, &wstr[0], size);
+						}
 						clipboard_text = wstring_to_utf8(wstr);
 						GlobalUnlock(hData);
 					}
 				}
 			}
-			
+
 			if (!clipboard_text.empty()) {
 				data.content = clipboard_text;
 				data.mime_type = "text/plain; charset=utf-8";
 			}
-			
+
 			CloseClipboard();
 		}
 #else
@@ -135,16 +150,17 @@ public:
 			// 使用xclip获取剪贴板内容，并指定UTF-8编码
 			data.content = exec_command("xclip -selection clipboard -o 2>/dev/null");
 			data.mime_type = "text/plain; charset=utf-8";
-			
+
 			// 移除可能的多余换行符
 			if (!data.content.empty() && data.content.back() == '\n') {
 				data.content.pop_back();
 			}
-		} catch (const std::exception& e) {
+		}
+		catch (const std::exception& e) {
 			std::cerr << "Error getting clipboard: " << e.what() << std::endl;
 		}
 #endif
-		
+
 		return data;
 	}
 
@@ -163,10 +179,10 @@ public:
 #ifdef _WIN32
 		if (OpenClipboard(nullptr)) {
 			EmptyClipboard();
-			
+
 			// 转换为宽字符（UTF-16）
 			std::wstring wstr = utf8_to_wstring(data.content);
-			
+
 			// 分配内存并设置剪贴板数据
 			HGLOBAL hClipboardData = GlobalAlloc(GMEM_MOVEABLE, (wstr.size() + 1) * sizeof(wchar_t));
 			if (hClipboardData) {
@@ -177,18 +193,19 @@ public:
 					SetClipboardData(CF_UNICODETEXT, hClipboardData);
 				}
 			}
-			
+
 			CloseClipboard();
 		}
 #else
 		try {
 			// 使用管道写入xclip，确保UTF-8编码
-			FILE* pipe = popen("xclip -selection clipboard -i", "w");
+			FILE* pipe = POPEN("xclip -selection clipboard -i", "w");
 			if (pipe) {
 				fwrite(data.content.c_str(), 1, data.content.size(), pipe);
-				pclose(pipe);
+				PCLOSE(pipe);
 			}
-		} catch (const std::exception& e) {
+		}
+		catch (const std::exception& e) {
 			std::cerr << "Error setting clipboard: " << e.what() << std::endl;
 		}
 #endif
@@ -203,12 +220,12 @@ public:
 
 		ClipboardData data = get_clipboard_content();
 		size_t new_hash = std::hash<std::string>{}(data.content);
-		
+
 		// 空内容不算更新
 		if (data.content.empty()) {
 			return false;
 		}
-		
+
 		if (new_hash != last_clipboard_hash) {
 			last_clipboard_hash = new_hash;
 			last_clipboard_content = data.content;
@@ -246,9 +263,11 @@ bool parse_arguments(int argc, char* argv[]) {
 	std::string mode_str = argv[1];
 	if (mode_str == "-c") {
 		current_mode = Mode::CLIENT;
-	} else if (mode_str == "-s") {
+	}
+	else if (mode_str == "-s") {
 		current_mode = Mode::SERVER;
-	} else {
+	}
+	else {
 		std::cerr << "Invalid mode. Use -c for client or -s for server.\n";
 		return false;
 	}
@@ -266,9 +285,9 @@ void run_server() {
 		tcp::acceptor acceptor(io_context, tcp::endpoint(tcp::v4(), port));
 		ClipboardManager clipboard;
 
-		std::cout << "Clipboard server started. Listening on " 
-				  << acceptor.local_endpoint().address().to_string() 
-				  << ":" << acceptor.local_endpoint().port() << std::endl;
+		std::cout << "Clipboard server started. Listening on "
+			<< acceptor.local_endpoint().address().to_string()
+			<< ":" << acceptor.local_endpoint().port() << std::endl;
 		std::cout << "Server UUID: " << clipboard.get_uuid_str() << std::endl;
 
 		std::vector<std::thread> client_threads;
@@ -298,11 +317,12 @@ void run_server() {
 						while (true) {
 							error_code ec;
 							size_t length = socket->read_some(boost::asio::buffer(recv_buffer), ec);
-							
+
 							if (ec == error::eof) {
 								std::cout << "Client disconnected" << std::endl;
 								break;
-							} else if (ec) {
+							}
+							else if (ec) {
 								throw system_error(ec);
 							}
 
@@ -321,13 +341,15 @@ void run_server() {
 								if (client != socket && client->is_open()) {
 									try {
 										write(*client, boost::asio::buffer(received), ec);
-									} catch (...) {
+									}
+									catch (...) {
 										// 忽略发送失败的客户端
 									}
 								}
 							}
 						}
-					} catch (std::exception& e) {
+					}
+					catch (std::exception& e) {
 						std::cerr << "Client handling exception: " << e.what() << std::endl;
 					}
 
@@ -336,14 +358,14 @@ void run_server() {
 						std::lock_guard<std::mutex> lock(clients_mutex);
 						clients.erase(std::remove(clients.begin(), clients.end(), socket), clients.end());
 					}
-				});
+					});
 			}
-		});
+			});
 
 		// 主线程处理服务器剪贴板更新
 		while (true) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(CLIPBOARD_CHECK_INTERVAL));
-			
+
 			if (clipboard.has_clipboard_changed()) {
 				std::string content = clipboard.get_last_clipboard_content();
 				std::cout << "Server clipboard changed (" << content.size() << " bytes)" << std::endl;
@@ -363,7 +385,8 @@ void run_server() {
 		for (auto& t : client_threads) {
 			if (t.joinable()) t.join();
 		}
-	} catch (std::exception& e) {
+	}
+	catch (std::exception& e) {
 		std::cerr << "Server exception: " << e.what() << std::endl;
 	}
 }
@@ -379,10 +402,10 @@ void run_client() {
 		connect(socket, endpoints);
 
 		ClipboardManager clipboard;
-		
-		std::cout << "Connected to clipboard server: " 
-				  << socket.remote_endpoint().address().to_string() 
-				  << ":" << socket.remote_endpoint().port() << std::endl;
+
+		std::cout << "Connected to clipboard server: "
+			<< socket.remote_endpoint().address().to_string()
+			<< ":" << socket.remote_endpoint().port() << std::endl;
 		std::cout << "Client UUID: " << clipboard.get_uuid_str() << std::endl;
 
 		// 启动接收线程
@@ -391,11 +414,12 @@ void run_client() {
 			while (true) {
 				error_code ec;
 				size_t length = socket.read_some(boost::asio::buffer(recv_buffer), ec);
-				
+
 				if (ec == error::eof) {
 					std::cout << "Server disconnected" << std::endl;
 					break;
-				} else if (ec) {
+				}
+				else if (ec) {
 					std::cerr << "Receive error: " << ec.message() << std::endl;
 					break;
 				}
@@ -409,12 +433,12 @@ void run_client() {
 				data.mime_type = "text/plain; charset=utf-8";
 				clipboard.set_clipboard_content(data);
 			}
-		});
+			});
 
 		// 主线程处理本地剪贴板更新
 		while (true) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(CLIPBOARD_CHECK_INTERVAL));
-			
+
 			if (clipboard.has_clipboard_changed()) {
 				std::string content = clipboard.get_last_clipboard_content();
 				std::cout << "Local clipboard changed (" << content.size() << " bytes), sending to server" << std::endl;
@@ -433,7 +457,8 @@ void run_client() {
 		if (receiver.joinable()) {
 			receiver.join();
 		}
-	} catch (std::exception& e) {
+	}
+	catch (std::exception& e) {
 		std::cerr << "Client exception: " << e.what() << std::endl;
 	}
 }
@@ -445,7 +470,8 @@ int main(int argc, char* argv[]) {
 
 	if (current_mode == Mode::SERVER) {
 		run_server();
-	} else {
+	}
+	else {
 		run_client();
 	}
 

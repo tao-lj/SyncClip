@@ -1487,4 +1487,4 @@ CMakeFiles/SyncClip.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/boost/algorithm/string/formatter.hpp \
  C:/msys64/mingw64/include/boost/algorithm/string/detail/formatter.hpp \
  C:/msys64/mingw64/include/boost/algorithm/string/erase.hpp \
- C:/msys64/mingw64/include/windows.h
+ C:/msys64/mingw64/include/windows.h C:/msys64/mingw64/include/fcntl.h
