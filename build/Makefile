@@ -84,51 +84,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	"C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	"C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles C:\Users\tlj34\code\gcc\SyncClip\build\\CMakeFiles\progress.marks
@@ -173,29 +128,149 @@ SyncClip/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/build
 .PHONY : SyncClip/fast
 
-src/main.obj: src/main.cpp.obj
-.PHONY : src/main.obj
+clipboard/clipboard_manager.obj: clipboard/clipboard_manager.cpp.obj
+.PHONY : clipboard/clipboard_manager.obj
 
 # target to build an object file
-src/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/src/main.cpp.obj
-.PHONY : src/main.cpp.obj
+clipboard/clipboard_manager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj
+.PHONY : clipboard/clipboard_manager.cpp.obj
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+clipboard/clipboard_manager.i: clipboard/clipboard_manager.cpp.i
+.PHONY : clipboard/clipboard_manager.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+clipboard/clipboard_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.i
+.PHONY : clipboard/clipboard_manager.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+clipboard/clipboard_manager.s: clipboard/clipboard_manager.cpp.s
+.PHONY : clipboard/clipboard_manager.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+clipboard/clipboard_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.s
+.PHONY : clipboard/clipboard_manager.cpp.s
+
+config/config.obj: config/config.cpp.obj
+.PHONY : config/config.obj
+
+# target to build an object file
+config/config.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/config/config.cpp.obj
+.PHONY : config/config.cpp.obj
+
+config/config.i: config/config.cpp.i
+.PHONY : config/config.i
+
+# target to preprocess a source file
+config/config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/config/config.cpp.i
+.PHONY : config/config.cpp.i
+
+config/config.s: config/config.cpp.s
+.PHONY : config/config.s
+
+# target to generate assembly for a file
+config/config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/config/config.cpp.s
+.PHONY : config/config.cpp.s
+
+main.obj: main.cpp.obj
+.PHONY : main.obj
+
+# target to build an object file
+main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/main.cpp.obj
+.PHONY : main.cpp.obj
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/main.cpp.s
+.PHONY : main.cpp.s
+
+network/client.obj: network/client.cpp.obj
+.PHONY : network/client.obj
+
+# target to build an object file
+network/client.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/network/client.cpp.obj
+.PHONY : network/client.cpp.obj
+
+network/client.i: network/client.cpp.i
+.PHONY : network/client.i
+
+# target to preprocess a source file
+network/client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/network/client.cpp.i
+.PHONY : network/client.cpp.i
+
+network/client.s: network/client.cpp.s
+.PHONY : network/client.s
+
+# target to generate assembly for a file
+network/client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/network/client.cpp.s
+.PHONY : network/client.cpp.s
+
+network/server.obj: network/server.cpp.obj
+.PHONY : network/server.obj
+
+# target to build an object file
+network/server.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/network/server.cpp.obj
+.PHONY : network/server.cpp.obj
+
+network/server.i: network/server.cpp.i
+.PHONY : network/server.i
+
+# target to preprocess a source file
+network/server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/network/server.cpp.i
+.PHONY : network/server.cpp.i
+
+network/server.s: network/server.cpp.s
+.PHONY : network/server.s
+
+# target to generate assembly for a file
+network/server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/network/server.cpp.s
+.PHONY : network/server.cpp.s
+
+utils/command_utils.obj: utils/command_utils.cpp.obj
+.PHONY : utils/command_utils.obj
+
+# target to build an object file
+utils/command_utils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj
+.PHONY : utils/command_utils.cpp.obj
+
+utils/command_utils.i: utils/command_utils.cpp.i
+.PHONY : utils/command_utils.i
+
+# target to preprocess a source file
+utils/command_utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/utils/command_utils.cpp.i
+.PHONY : utils/command_utils.cpp.i
+
+utils/command_utils.s: utils/command_utils.cpp.s
+.PHONY : utils/command_utils.s
+
+# target to generate assembly for a file
+utils/command_utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/utils/command_utils.cpp.s
+.PHONY : utils/command_utils.cpp.s
 
 # Help Target
 help:
@@ -204,15 +279,26 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... edit_cache
-	@echo ... install
-	@echo ... install/local
-	@echo ... install/strip
-	@echo ... list_install_components
 	@echo ... rebuild_cache
 	@echo ... SyncClip
-	@echo ... src/main.obj
-	@echo ... src/main.i
-	@echo ... src/main.s
+	@echo ... clipboard/clipboard_manager.obj
+	@echo ... clipboard/clipboard_manager.i
+	@echo ... clipboard/clipboard_manager.s
+	@echo ... config/config.obj
+	@echo ... config/config.i
+	@echo ... config/config.s
+	@echo ... main.obj
+	@echo ... main.i
+	@echo ... main.s
+	@echo ... network/client.obj
+	@echo ... network/client.i
+	@echo ... network/client.s
+	@echo ... network/server.obj
+	@echo ... network/server.i
+	@echo ... network/server.s
+	@echo ... utils/command_utils.obj
+	@echo ... utils/command_utils.i
+	@echo ... utils/command_utils.s
 .PHONY : help
 
 

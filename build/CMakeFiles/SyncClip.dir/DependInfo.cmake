@@ -8,7 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/tlj34/code/gcc/SyncClip/src/main.cpp" "CMakeFiles/SyncClip.dir/src/main.cpp.obj" "gcc" "CMakeFiles/SyncClip.dir/src/main.cpp.obj.d"
+  "C:/Users/tlj34/code/gcc/SyncClip/clipboard/clipboard_manager.cpp" "CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj" "gcc" "CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj.d"
+  "C:/Users/tlj34/code/gcc/SyncClip/config/config.cpp" "CMakeFiles/SyncClip.dir/config/config.cpp.obj" "gcc" "CMakeFiles/SyncClip.dir/config/config.cpp.obj.d"
+  "C:/Users/tlj34/code/gcc/SyncClip/main.cpp" "CMakeFiles/SyncClip.dir/main.cpp.obj" "gcc" "CMakeFiles/SyncClip.dir/main.cpp.obj.d"
+  "C:/Users/tlj34/code/gcc/SyncClip/network/client.cpp" "CMakeFiles/SyncClip.dir/network/client.cpp.obj" "gcc" "CMakeFiles/SyncClip.dir/network/client.cpp.obj.d"
+  "C:/Users/tlj34/code/gcc/SyncClip/network/server.cpp" "CMakeFiles/SyncClip.dir/network/server.cpp.obj" "gcc" "CMakeFiles/SyncClip.dir/network/server.cpp.obj.d"
+  "C:/Users/tlj34/code/gcc/SyncClip/utils/command_utils.cpp" "CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj" "gcc" "CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -1,8 +1,38 @@
 [
 {
   "directory": "C:/Users/tlj34/code/gcc/SyncClip/build",
-  "command": "C:\\msys64\\mingw64\\bin\\c++.exe   -std=gnu++17 -o CMakeFiles\\SyncClip.dir\\src\\main.cpp.obj -c C:\\Users\\tlj34\\code\\gcc\\SyncClip\\src\\main.cpp",
-  "file": "C:/Users/tlj34/code/gcc/SyncClip/src/main.cpp",
-  "output": "CMakeFiles/SyncClip.dir/src/main.cpp.obj"
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe   -std=gnu++17 -o CMakeFiles\\SyncClip.dir\\main.cpp.obj -c C:\\Users\\tlj34\\code\\gcc\\SyncClip\\main.cpp",
+  "file": "C:/Users/tlj34/code/gcc/SyncClip/main.cpp",
+  "output": "CMakeFiles/SyncClip.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/tlj34/code/gcc/SyncClip/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe   -std=gnu++17 -o CMakeFiles\\SyncClip.dir\\config\\config.cpp.obj -c C:\\Users\\tlj34\\code\\gcc\\SyncClip\\config\\config.cpp",
+  "file": "C:/Users/tlj34/code/gcc/SyncClip/config/config.cpp",
+  "output": "CMakeFiles/SyncClip.dir/config/config.cpp.obj"
+},
+{
+  "directory": "C:/Users/tlj34/code/gcc/SyncClip/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe   -std=gnu++17 -o CMakeFiles\\SyncClip.dir\\utils\\command_utils.cpp.obj -c C:\\Users\\tlj34\\code\\gcc\\SyncClip\\utils\\command_utils.cpp",
+  "file": "C:/Users/tlj34/code/gcc/SyncClip/utils/command_utils.cpp",
+  "output": "CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj"
+},
+{
+  "directory": "C:/Users/tlj34/code/gcc/SyncClip/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe   -std=gnu++17 -o CMakeFiles\\SyncClip.dir\\clipboard\\clipboard_manager.cpp.obj -c C:\\Users\\tlj34\\code\\gcc\\SyncClip\\clipboard\\clipboard_manager.cpp",
+  "file": "C:/Users/tlj34/code/gcc/SyncClip/clipboard/clipboard_manager.cpp",
+  "output": "CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj"
+},
+{
+  "directory": "C:/Users/tlj34/code/gcc/SyncClip/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe   -std=gnu++17 -o CMakeFiles\\SyncClip.dir\\network\\server.cpp.obj -c C:\\Users\\tlj34\\code\\gcc\\SyncClip\\network\\server.cpp",
+  "file": "C:/Users/tlj34/code/gcc/SyncClip/network/server.cpp",
+  "output": "CMakeFiles/SyncClip.dir/network/server.cpp.obj"
+},
+{
+  "directory": "C:/Users/tlj34/code/gcc/SyncClip/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe   -std=gnu++17 -o CMakeFiles\\SyncClip.dir\\network\\client.cpp.obj -c C:\\Users\\tlj34\\code\\gcc\\SyncClip\\network\\client.cpp",
+  "file": "C:/Users/tlj34/code/gcc/SyncClip/network/client.cpp",
+  "output": "CMakeFiles/SyncClip.dir/network/client.cpp.obj"
 }
 ]

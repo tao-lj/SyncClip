@@ -71,33 +71,113 @@ include CMakeFiles/SyncClip.dir/flags.make
 CMakeFiles/SyncClip.dir/codegen:
 .PHONY : CMakeFiles/SyncClip.dir/codegen
 
-CMakeFiles/SyncClip.dir/src/main.cpp.obj: CMakeFiles/SyncClip.dir/flags.make
-CMakeFiles/SyncClip.dir/src/main.cpp.obj: C:/Users/tlj34/code/gcc/SyncClip/src/main.cpp
-CMakeFiles/SyncClip.dir/src/main.cpp.obj: CMakeFiles/SyncClip.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SyncClip.dir/src/main.cpp.obj"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SyncClip.dir/src/main.cpp.obj -MF CMakeFiles\SyncClip.dir\src\main.cpp.obj.d -o CMakeFiles\SyncClip.dir\src\main.cpp.obj -c C:\Users\tlj34\code\gcc\SyncClip\src\main.cpp
+CMakeFiles/SyncClip.dir/main.cpp.obj: CMakeFiles/SyncClip.dir/flags.make
+CMakeFiles/SyncClip.dir/main.cpp.obj: C:/Users/tlj34/code/gcc/SyncClip/main.cpp
+CMakeFiles/SyncClip.dir/main.cpp.obj: CMakeFiles/SyncClip.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SyncClip.dir/main.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SyncClip.dir/main.cpp.obj -MF CMakeFiles\SyncClip.dir\main.cpp.obj.d -o CMakeFiles\SyncClip.dir\main.cpp.obj -c C:\Users\tlj34\code\gcc\SyncClip\main.cpp
 
-CMakeFiles/SyncClip.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SyncClip.dir/src/main.cpp.i"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\tlj34\code\gcc\SyncClip\src\main.cpp > CMakeFiles\SyncClip.dir\src\main.cpp.i
+CMakeFiles/SyncClip.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SyncClip.dir/main.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\tlj34\code\gcc\SyncClip\main.cpp > CMakeFiles\SyncClip.dir\main.cpp.i
 
-CMakeFiles/SyncClip.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SyncClip.dir/src/main.cpp.s"
-	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\tlj34\code\gcc\SyncClip\src\main.cpp -o CMakeFiles\SyncClip.dir\src\main.cpp.s
+CMakeFiles/SyncClip.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SyncClip.dir/main.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\tlj34\code\gcc\SyncClip\main.cpp -o CMakeFiles\SyncClip.dir\main.cpp.s
+
+CMakeFiles/SyncClip.dir/config/config.cpp.obj: CMakeFiles/SyncClip.dir/flags.make
+CMakeFiles/SyncClip.dir/config/config.cpp.obj: C:/Users/tlj34/code/gcc/SyncClip/config/config.cpp
+CMakeFiles/SyncClip.dir/config/config.cpp.obj: CMakeFiles/SyncClip.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SyncClip.dir/config/config.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SyncClip.dir/config/config.cpp.obj -MF CMakeFiles\SyncClip.dir\config\config.cpp.obj.d -o CMakeFiles\SyncClip.dir\config\config.cpp.obj -c C:\Users\tlj34\code\gcc\SyncClip\config\config.cpp
+
+CMakeFiles/SyncClip.dir/config/config.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SyncClip.dir/config/config.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\tlj34\code\gcc\SyncClip\config\config.cpp > CMakeFiles\SyncClip.dir\config\config.cpp.i
+
+CMakeFiles/SyncClip.dir/config/config.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SyncClip.dir/config/config.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\tlj34\code\gcc\SyncClip\config\config.cpp -o CMakeFiles\SyncClip.dir\config\config.cpp.s
+
+CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj: CMakeFiles/SyncClip.dir/flags.make
+CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj: C:/Users/tlj34/code/gcc/SyncClip/utils/command_utils.cpp
+CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj: CMakeFiles/SyncClip.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj -MF CMakeFiles\SyncClip.dir\utils\command_utils.cpp.obj.d -o CMakeFiles\SyncClip.dir\utils\command_utils.cpp.obj -c C:\Users\tlj34\code\gcc\SyncClip\utils\command_utils.cpp
+
+CMakeFiles/SyncClip.dir/utils/command_utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SyncClip.dir/utils/command_utils.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\tlj34\code\gcc\SyncClip\utils\command_utils.cpp > CMakeFiles\SyncClip.dir\utils\command_utils.cpp.i
+
+CMakeFiles/SyncClip.dir/utils/command_utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SyncClip.dir/utils/command_utils.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\tlj34\code\gcc\SyncClip\utils\command_utils.cpp -o CMakeFiles\SyncClip.dir\utils\command_utils.cpp.s
+
+CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj: CMakeFiles/SyncClip.dir/flags.make
+CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj: C:/Users/tlj34/code/gcc/SyncClip/clipboard/clipboard_manager.cpp
+CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj: CMakeFiles/SyncClip.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj -MF CMakeFiles\SyncClip.dir\clipboard\clipboard_manager.cpp.obj.d -o CMakeFiles\SyncClip.dir\clipboard\clipboard_manager.cpp.obj -c C:\Users\tlj34\code\gcc\SyncClip\clipboard\clipboard_manager.cpp
+
+CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\tlj34\code\gcc\SyncClip\clipboard\clipboard_manager.cpp > CMakeFiles\SyncClip.dir\clipboard\clipboard_manager.cpp.i
+
+CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\tlj34\code\gcc\SyncClip\clipboard\clipboard_manager.cpp -o CMakeFiles\SyncClip.dir\clipboard\clipboard_manager.cpp.s
+
+CMakeFiles/SyncClip.dir/network/server.cpp.obj: CMakeFiles/SyncClip.dir/flags.make
+CMakeFiles/SyncClip.dir/network/server.cpp.obj: C:/Users/tlj34/code/gcc/SyncClip/network/server.cpp
+CMakeFiles/SyncClip.dir/network/server.cpp.obj: CMakeFiles/SyncClip.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SyncClip.dir/network/server.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SyncClip.dir/network/server.cpp.obj -MF CMakeFiles\SyncClip.dir\network\server.cpp.obj.d -o CMakeFiles\SyncClip.dir\network\server.cpp.obj -c C:\Users\tlj34\code\gcc\SyncClip\network\server.cpp
+
+CMakeFiles/SyncClip.dir/network/server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SyncClip.dir/network/server.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\tlj34\code\gcc\SyncClip\network\server.cpp > CMakeFiles\SyncClip.dir\network\server.cpp.i
+
+CMakeFiles/SyncClip.dir/network/server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SyncClip.dir/network/server.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\tlj34\code\gcc\SyncClip\network\server.cpp -o CMakeFiles\SyncClip.dir\network\server.cpp.s
+
+CMakeFiles/SyncClip.dir/network/client.cpp.obj: CMakeFiles/SyncClip.dir/flags.make
+CMakeFiles/SyncClip.dir/network/client.cpp.obj: C:/Users/tlj34/code/gcc/SyncClip/network/client.cpp
+CMakeFiles/SyncClip.dir/network/client.cpp.obj: CMakeFiles/SyncClip.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SyncClip.dir/network/client.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SyncClip.dir/network/client.cpp.obj -MF CMakeFiles\SyncClip.dir\network\client.cpp.obj.d -o CMakeFiles\SyncClip.dir\network\client.cpp.obj -c C:\Users\tlj34\code\gcc\SyncClip\network\client.cpp
+
+CMakeFiles/SyncClip.dir/network/client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SyncClip.dir/network/client.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\tlj34\code\gcc\SyncClip\network\client.cpp > CMakeFiles\SyncClip.dir\network\client.cpp.i
+
+CMakeFiles/SyncClip.dir/network/client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SyncClip.dir/network/client.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\tlj34\code\gcc\SyncClip\network\client.cpp -o CMakeFiles\SyncClip.dir\network\client.cpp.s
 
 # Object files for target SyncClip
 SyncClip_OBJECTS = \
-"CMakeFiles/SyncClip.dir/src/main.cpp.obj"
+"CMakeFiles/SyncClip.dir/main.cpp.obj" \
+"CMakeFiles/SyncClip.dir/config/config.cpp.obj" \
+"CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj" \
+"CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj" \
+"CMakeFiles/SyncClip.dir/network/server.cpp.obj" \
+"CMakeFiles/SyncClip.dir/network/client.cpp.obj"
 
 # External object files for target SyncClip
 SyncClip_EXTERNAL_OBJECTS =
 
-SyncClip.exe: CMakeFiles/SyncClip.dir/src/main.cpp.obj
+SyncClip.exe: CMakeFiles/SyncClip.dir/main.cpp.obj
+SyncClip.exe: CMakeFiles/SyncClip.dir/config/config.cpp.obj
+SyncClip.exe: CMakeFiles/SyncClip.dir/utils/command_utils.cpp.obj
+SyncClip.exe: CMakeFiles/SyncClip.dir/clipboard/clipboard_manager.cpp.obj
+SyncClip.exe: CMakeFiles/SyncClip.dir/network/server.cpp.obj
+SyncClip.exe: CMakeFiles/SyncClip.dir/network/client.cpp.obj
 SyncClip.exe: CMakeFiles/SyncClip.dir/build.make
 SyncClip.exe: CMakeFiles/SyncClip.dir/linkLibs.rsp
 SyncClip.exe: CMakeFiles/SyncClip.dir/objects1.rsp
 SyncClip.exe: CMakeFiles/SyncClip.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable SyncClip.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable SyncClip.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\SyncClip.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

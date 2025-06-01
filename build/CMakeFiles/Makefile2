@@ -84,12 +84,12 @@ clean: CMakeFiles/SyncClip.dir/clean
 CMakeFiles/SyncClip.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=1,2 "Built target SyncClip"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target SyncClip"
 .PHONY : CMakeFiles/SyncClip.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/SyncClip.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/SyncClip.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles 0
 .PHONY : CMakeFiles/SyncClip.dir/rule
@@ -101,7 +101,7 @@ SyncClip: CMakeFiles/SyncClip.dir/rule
 # codegen rule for target.
 CMakeFiles/SyncClip.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\SyncClip.dir\build.make CMakeFiles/SyncClip.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=1,2 "Finished codegen for target SyncClip"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\tlj34\code\gcc\SyncClip\build\CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target SyncClip"
 .PHONY : CMakeFiles/SyncClip.dir/codegen
 
 # clean rule for target.
