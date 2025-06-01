@@ -313,7 +313,8 @@ void run_server() {
 				// 为客户端启动处理线程
 				client_threads.emplace_back([socket, &clients, &clients_mutex, &clipboard]() {
 					try {
-						char recv_buffer[BUFFER_SIZE];
+						// 使用动态分配的缓冲区解决栈溢出问题
+						std::vector<char> recv_buffer(BUFFER_SIZE);
 						while (true) {
 							error_code ec;
 							size_t length = socket->read_some(boost::asio::buffer(recv_buffer), ec);
@@ -326,7 +327,7 @@ void run_server() {
 								throw system_error(ec);
 							}
 
-							std::string received(recv_buffer, length);
+							std::string received(recv_buffer.data(), length);
 							std::cout << "Received clipboard content (" << length << " bytes)" << std::endl;
 
 							// 更新服务器剪贴板
@@ -410,7 +411,8 @@ void run_client() {
 
 		// 启动接收线程
 		std::thread receiver([&socket, &clipboard]() {
-			char recv_buffer[BUFFER_SIZE];
+			// 使用动态分配的缓冲区解决栈溢出问题
+			std::vector<char> recv_buffer(BUFFER_SIZE);
 			while (true) {
 				error_code ec;
 				size_t length = socket.read_some(boost::asio::buffer(recv_buffer), ec);
@@ -424,7 +426,7 @@ void run_client() {
 					break;
 				}
 
-				std::string received(recv_buffer, length);
+				std::string received(recv_buffer.data(), length);
 				std::cout << "Received clipboard update (" << length << " bytes)" << std::endl;
 
 				// 更新本地剪贴板

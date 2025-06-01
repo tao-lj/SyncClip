@@ -1270,6 +1270,7 @@ CMakeFiles/SyncClip.dir/src/main.cpp.obj
  C:/msys64/mingw64/include/errhandlingapi.h
  C:/msys64/mingw64/include/errno.h
  C:/msys64/mingw64/include/excpt.h
+ C:/msys64/mingw64/include/fcntl.h
  C:/msys64/mingw64/include/fibersapi.h
  C:/msys64/mingw64/include/fileapi.h
  C:/msys64/mingw64/include/fltwinerror.h

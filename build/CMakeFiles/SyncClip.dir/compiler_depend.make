@@ -1269,6 +1269,7 @@ CMakeFiles/SyncClip.dir/src/main.cpp.obj: C:/Users/tlj34/code/gcc/SyncClip/src/m
   C:/msys64/mingw64/include/errhandlingapi.h \
   C:/msys64/mingw64/include/errno.h \
   C:/msys64/mingw64/include/excpt.h \
+  C:/msys64/mingw64/include/fcntl.h \
   C:/msys64/mingw64/include/fibersapi.h \
   C:/msys64/mingw64/include/fileapi.h \
   C:/msys64/mingw64/include/fltwinerror.h \
@@ -3896,6 +3897,8 @@ C:/msys64/mingw64/include/c++/15.1.0/system_error:
 C:/msys64/mingw64/include/boost/type_traits/add_rvalue_reference.hpp:
 
 C:/msys64/mingw64/include/boost/type_traits/add_volatile.hpp:
+
+C:/msys64/mingw64/include/fcntl.h:
 
 C:/msys64/mingw64/include/boost/type_traits/conversion_traits.hpp:
 
