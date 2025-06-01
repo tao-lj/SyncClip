@@ -8,13 +8,13 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(Boost REQUIRED)
 
 add_executable(SyncClip 
-	main.cpp
-	config/config.cpp
-	config/config_manager.cpp
-	utils/command_utils.cpp
-	clipboard/clipboard_manager.cpp
-	network/server.cpp
-	network/client.cpp
+	src/main.cpp
+	src/config/config.cpp
+	src/config/config_manager.cpp
+	src/utils/command_utils.cpp
+	src/clipboard/clipboard_manager.cpp
+	src/network/server.cpp
+	src/network/client.cpp
 )
 
 if(WIN32)
