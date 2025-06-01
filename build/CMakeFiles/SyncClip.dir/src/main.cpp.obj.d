@@ -179,6 +179,14 @@ CMakeFiles/SyncClip.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/15.1.0/pstl/execution_defs.h \
  C:/msys64/mingw64/include/c++/15.1.0/array \
  C:/msys64/mingw64/include/c++/15.1.0/compare \
+ C:/msys64/mingw64/include/c++/15.1.0/codecvt \
+ C:/msys64/mingw64/include/c++/15.1.0/bits/codecvt.h \
+ C:/msys64/mingw64/include/c++/15.1.0/locale \
+ C:/msys64/mingw64/include/c++/15.1.0/bits/locale_facets_nonio.h \
+ C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/time_members.h \
+ C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/messages_members.h \
+ C:/msys64/mingw64/include/c++/15.1.0/bits/locale_facets_nonio.tcc \
+ C:/msys64/mingw64/include/c++/15.1.0/bits/locale_conv.h \
  C:/msys64/mingw64/include/boost/asio.hpp \
  C:/msys64/mingw64/include/boost/asio/any_completion_executor.hpp \
  C:/msys64/mingw64/include/boost/asio/detail/config.hpp \
@@ -1271,13 +1279,6 @@ CMakeFiles/SyncClip.dir/src/main.cpp.obj: \
  C:/msys64/mingw64/include/boost/uuid/time_generator_v7.hpp \
  C:/msys64/mingw64/include/boost/uuid/uuid_io.hpp \
  C:/msys64/mingw64/include/boost/uuid/detail/to_chars.hpp \
- C:/msys64/mingw64/include/c++/15.1.0/locale \
- C:/msys64/mingw64/include/c++/15.1.0/bits/locale_facets_nonio.h \
- C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/time_members.h \
- C:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32/bits/messages_members.h \
- C:/msys64/mingw64/include/c++/15.1.0/bits/codecvt.h \
- C:/msys64/mingw64/include/c++/15.1.0/bits/locale_facets_nonio.tcc \
- C:/msys64/mingw64/include/c++/15.1.0/bits/locale_conv.h \
  C:/msys64/mingw64/include/boost/algorithm/string.hpp \
  C:/msys64/mingw64/include/boost/algorithm/string/std_containers_traits.hpp \
  C:/msys64/mingw64/include/boost/algorithm/string/std/string_traits.hpp \

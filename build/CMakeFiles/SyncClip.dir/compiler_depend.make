@@ -1160,6 +1160,7 @@ CMakeFiles/SyncClip.dir/src/main.cpp.obj: C:/Users/tlj34/code/gcc/SyncClip/src/m
   C:/msys64/mingw64/include/c++/15.1.0/climits \
   C:/msys64/mingw64/include/c++/15.1.0/clocale \
   C:/msys64/mingw64/include/c++/15.1.0/cmath \
+  C:/msys64/mingw64/include/c++/15.1.0/codecvt \
   C:/msys64/mingw64/include/c++/15.1.0/compare \
   C:/msys64/mingw64/include/c++/15.1.0/concepts \
   C:/msys64/mingw64/include/c++/15.1.0/condition_variable \
@@ -3717,6 +3718,8 @@ C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/amxfp16intrin.h:
 C:/msys64/mingw64/include/boost/preprocessor/logical/not.hpp:
 
 C:/msys64/mingw64/include/boost/preprocessor/repeat.hpp:
+
+C:/msys64/mingw64/include/c++/15.1.0/codecvt:
 
 C:/msys64/mingw64/include/boost/preprocessor/repetition/detail/limits/for_256.hpp:
 

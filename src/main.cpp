@@ -8,6 +8,8 @@
 #include <memory>
 #include <stdexcept>
 #include <array>
+#include <codecvt>
+#include <locale>
 #include <boost/asio.hpp>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
@@ -61,6 +63,25 @@ void exec_command_no_output(const char* cmd) {
 	}
 }
 
+#ifdef _WIN32
+// Windows UTF-8 转换函数
+std::string wstring_to_utf8(const std::wstring& wstr) {
+	if (wstr.empty()) return std::string();
+	int size_needed = WideCharToMultiByte(CP_UTF8, 0, &wstr[0], (int)wstr.size(), NULL, 0, NULL, NULL);
+	std::string str(size_needed, 0);
+	WideCharToMultiByte(CP_UTF8, 0, &wstr[0], (int)wstr.size(), &str[0], size_needed, NULL, NULL);
+	return str;
+}
+
+std::wstring utf8_to_wstring(const std::string& str) {
+	if (str.empty()) return std::wstring();
+	int size_needed = MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), NULL, 0);
+	std::wstring wstr(size_needed, 0);
+	MultiByteToWideChar(CP_UTF8, 0, &str[0], (int)str.size(), &wstr[0], size_needed);
+	return wstr;
+}
+#endif
+
 // 剪贴板管理类
 class ClipboardManager {
 public:
@@ -75,23 +96,45 @@ public:
 		
 #ifdef _WIN32
 		if (OpenClipboard(nullptr)) {
-			if (IsClipboardFormatAvailable(CF_TEXT)) {
-				HANDLE hData = GetClipboardData(CF_TEXT);
+			std::string clipboard_text;
+			
+			// 优先尝试获取Unicode文本
+			if (IsClipboardFormatAvailable(CF_UNICODETEXT)) {
+				HANDLE hData = GetClipboardData(CF_UNICODETEXT);
 				if (hData) {
-					char* pszText = static_cast<char*>(GlobalLock(hData));
-					if (pszText) {
-						data.content = pszText;
-						data.mime_type = "text/plain";
+					wchar_t* wstr = static_cast<wchar_t*>(GlobalLock(hData));
+					if (wstr) {
+						clipboard_text = wstring_to_utf8(wstr);
 						GlobalUnlock(hData);
 					}
 				}
 			}
+			// 如果没有Unicode文本，尝试获取ANSI文本
+			else if (IsClipboardFormatAvailable(CF_TEXT)) {
+				HANDLE hData = GetClipboardData(CF_TEXT);
+				if (hData) {
+					char* cstr = static_cast<char*>(GlobalLock(hData));
+					if (cstr) {
+						// 将ANSI文本转换为UTF-8
+						std::wstring wstr(cstr, cstr + strlen(cstr));
+						clipboard_text = wstring_to_utf8(wstr);
+						GlobalUnlock(hData);
+					}
+				}
+			}
+			
+			if (!clipboard_text.empty()) {
+				data.content = clipboard_text;
+				data.mime_type = "text/plain; charset=utf-8";
+			}
+			
 			CloseClipboard();
 		}
 #else
 		try {
+			// 使用xclip获取剪贴板内容，并指定UTF-8编码
 			data.content = exec_command("xclip -selection clipboard -o 2>/dev/null");
-			data.mime_type = "text/plain";
+			data.mime_type = "text/plain; charset=utf-8";
 			
 			// 移除可能的多余换行符
 			if (!data.content.empty() && data.content.back() == '\n') {
@@ -120,31 +163,30 @@ public:
 #ifdef _WIN32
 		if (OpenClipboard(nullptr)) {
 			EmptyClipboard();
-			HGLOBAL hClipboardData = GlobalAlloc(GMEM_DDESHARE, data.content.size() + 1);
+			
+			// 转换为宽字符（UTF-16）
+			std::wstring wstr = utf8_to_wstring(data.content);
+			
+			// 分配内存并设置剪贴板数据
+			HGLOBAL hClipboardData = GlobalAlloc(GMEM_MOVEABLE, (wstr.size() + 1) * sizeof(wchar_t));
 			if (hClipboardData) {
-				char* pchData = static_cast<char*>(GlobalLock(hClipboardData));
+				wchar_t* pchData = static_cast<wchar_t*>(GlobalLock(hClipboardData));
 				if (pchData) {
-					strcpy(pchData, data.content.c_str());
+					wcscpy_s(pchData, wstr.size() + 1, wstr.c_str());
 					GlobalUnlock(hClipboardData);
-					SetClipboardData(CF_TEXT, hClipboardData);
+					SetClipboardData(CF_UNICODETEXT, hClipboardData);
 				}
 			}
+			
 			CloseClipboard();
 		}
 #else
 		try {
-			// 使用临时文件设置剪贴板
-			FILE* tmp = tmpfile();
-			if (tmp) {
-				fwrite(data.content.c_str(), 1, data.content.size(), tmp);
-				rewind(tmp);
-				
-				std::string cmd = "xclip -selection clipboard -i";
-				std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd.c_str(), "w"), pclose);
-				if (pipe) {
-					fwrite(data.content.c_str(), 1, data.content.size(), pipe.get());
-				}
-				fclose(tmp);
+			// 使用管道写入xclip，确保UTF-8编码
+			FILE* pipe = popen("xclip -selection clipboard -i", "w");
+			if (pipe) {
+				fwrite(data.content.c_str(), 1, data.content.size(), pipe);
+				pclose(pipe);
 			}
 		} catch (const std::exception& e) {
 			std::cerr << "Error setting clipboard: " << e.what() << std::endl;
@@ -270,7 +312,7 @@ void run_server() {
 							// 更新服务器剪贴板
 							ClipboardData data;
 							data.content = received;
-							data.mime_type = "text/plain";
+							data.mime_type = "text/plain; charset=utf-8";
 							clipboard.set_clipboard_content(data);
 
 							// 广播给所有其他客户端
@@ -364,7 +406,7 @@ void run_client() {
 				// 更新本地剪贴板
 				ClipboardData data;
 				data.content = received;
-				data.mime_type = "text/plain";
+				data.mime_type = "text/plain; charset=utf-8";
 				clipboard.set_clipboard_content(data);
 			}
 		});
