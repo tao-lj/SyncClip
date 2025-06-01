@@ -10,6 +10,7 @@ find_package(Boost REQUIRED)
 add_executable(SyncClip 
 	main.cpp
 	config/config.cpp
+	config/config_manager.cpp
 	utils/command_utils.cpp
 	clipboard/clipboard_manager.cpp
 	network/server.cpp
