@@ -4,7 +4,7 @@
 #include <codecvt>
 #include <locale>
 #include <cstring>
-#include <functional> // for std::hash
+#include <functional>
 
 #ifdef _WIN32
 #include <Windows.h>

@@ -8,7 +8,7 @@
 #define POPEN _popen
 #define PCLOSE _pclose
 #else
-#include <cstdio> // 添加这个头文件
+#include <cstdio>
 #define POPEN popen
 #define PCLOSE pclose
 #endif

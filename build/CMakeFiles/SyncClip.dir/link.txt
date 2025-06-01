@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\SyncClip.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\SyncClip.dir/objects.a @CMakeFiles\SyncClip.dir\objects1.rsp
-C:\msys64\mingw64\bin\c++.exe -Wl,--whole-archive CMakeFiles\SyncClip.dir/objects.a -Wl,--no-whole-archive -o SyncClip.exe -Wl,--out-implib,libSyncClip.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\SyncClip.dir\linkLibs.rsp
